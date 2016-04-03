@@ -5,4 +5,5 @@ Used Picaso and auto view pager slider libraries for this project.
 
 Here's what it looks like.
 
-[[https://raw.githubusercontent.com/mliars/AndroidCarousel/master/imageCarousel.png]]
+![Alt text](imageCarousel.png?raw=true "Android Image Slider with thumbnail")
+
