@@ -3,6 +3,7 @@ package com.ankashala.androidcarousel;
 import android.app.Activity;
 import android.support.design.widget.TabLayout;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,8 +11,6 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-
-import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
 
 public class MainActivity extends Activity {
 
@@ -36,7 +35,7 @@ public class MainActivity extends Activity {
 
 
         // Add View Pager
-        AutoScrollViewPager mViewPager = (AutoScrollViewPager) findViewById(R.id.activity_main_carousel_view_pager);
+        ViewPager mViewPager = (ViewPager) findViewById(R.id.activity_main_carousel_view_pager);
         CarouselAdapter mPagerAdapter = new CarouselAdapter(this, mImageArrayList);
         mViewPager.setAdapter(mPagerAdapter);
 
@@ -44,10 +43,6 @@ public class MainActivity extends Activity {
         mTabLayout = (TabLayout) findViewById(R.id.activity_main_tab_layout);
         mTabLayout.setupWithViewPager(mViewPager);
         setupCustomTabs();
-
-        // Auto Scroll of tabs
-        mViewPager.startAutoScroll();
-        mViewPager.setInterval(3000);
     }
 
     // For all the items in the image array list, we add a custom tab view
@@ -61,7 +56,7 @@ public class MainActivity extends Activity {
     private void setUpTab(int i) {
         View v = LayoutInflater.from(this).inflate(R.layout.carousel_tab, null);
         ImageView tabImage = (ImageView) v.findViewById(R.id.carousel_tab_image_view);
-        Picasso.with(this).load(mImageArrayList.get(i)).into(tabImage);
+        Picasso.with(getContext()).load(mImageArrayList.get(i)).resize(200, 200).centerCrop().into(tabImage);
         mTabLayout.getTabAt(i).setCustomView(v);
     }
 }
